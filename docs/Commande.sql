@@ -5,11 +5,13 @@ use salle_sportv2 ;
 -- creation des tables dans la base de donnees
 -- table du mebre
 create table Utilisateurs (
-    id_Membre INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
     mail VARCHAR(100) NOT NULL UNIQUE,
-    telephone VARCHAR(15)
+    telephone VARCHAR(15),
+    mot_de_passe VARCHAR(20),
+    rolee ENUM('membre', 'admin') NOT NULL
 );
 -- table  des activités
 CREATE TABLE activite (
@@ -28,19 +30,19 @@ CREATE TABLE reservations (
     idactivite INT NOT NULL,
     date_reservation DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('Confirmée', 'Annulée') DEFAULT 'Confirmée',
-    FOREIGN KEY (idmembre) REFERENCES membres(id_Membre) ON DELETE CASCADE,
+    FOREIGN KEY (idmembre) REFERENCES Utilisateurs(id_user) ON DELETE CASCADE,
     FOREIGN KEY (idactivite) REFERENCES activite(id_Activite) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Insertion dans les tables
 -- table membre
-INSERT INTO membres (nom, prenom, mail, telephone) 
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
 VALUES ('NMISSI', 'Nadia', 'nmissi@example.com', '0612345678');
-INSERT INTO membres (nom, prenom, mail, telephone) 
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
 VALUES ('EL HAMRAOUI', 'Fatima', 'elhamraoui@example.com', '0654321987');
-INSERT INTO membres (nom, prenom, mail, telephone) 
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
 VALUES ('OUAHBI', 'Mohamed', 'ouahbi@example.com', '0678451239');
-INSERT INTO membres (nom, prenom, mail, telephone) 
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
 VALUES ('BENHADDOU', 'Salma', 'benhaddou@example.com', '0611223344');
 
 
@@ -67,7 +69,7 @@ VALUES (1, 3, '2024-12-22 09:00:00', 'Confirmée');
 
 -- Afichage dans les tables
 -- table membre
-SELECT * FROM membres;
+SELECT * FROM Utilisateurs;
 
 -- table activite
 SELECT * FROM activite;
@@ -78,18 +80,18 @@ SELECT * FROM reservations;
 
 -- update dans les tables
 -- table membre
-UPDATE membres 
+UPDATEUtilisateurs 
 SET telephone = '0698765432' 
-WHERE id_Membre = 1;
-UPDATE membres 
+WHERE id_user = 1;
+UPDATE Utilisateurs 
 SET telephone = '0701234567' 
-WHERE id_Membre = 2;
-UPDATE membres 
+WHERE id_user = 2;
+UPDATE Utilisateurs 
 SET mail = 'fatima.elhamraoui@example.com' 
-WHERE id_Membre = 3;
-UPDATE membres 
+WHERE id_user = 3;
+UPDATE Utilisateurs 
 SET nom = 'BENHADDOU' 
-WHERE id_Membre = 4;
+WHERE id_user = 4;
 
 -- table activite
 UPDATE activite 
@@ -126,8 +128,8 @@ WHERE id_reservation = 1;
 
 -- suppression dans les tables
 -- table membre
-DELETE FROM membres 
-WHERE id_Membre = 1;
+DELETE FROM Utilisateurs 
+WHERE id_user = 1;
 
 -- table activite
 DELETE FROM activite 
@@ -145,17 +147,25 @@ FROM reservations
 JOIN activite 
 ON reservations.idactivite = activite.id_Activite;
 
--- Afficher toutes les réservations avec les informations des membres et des activités
+-- Afficher toutes les réservations avec les informations desUtilisateurs et des activités
 SELECT 
     reservations.id_reservation,
-    membres.nom AS nom_membre,
-    membres.prenom AS prenom_membre,
+   Utilisateurs.nom AS nom_membre,
+   Utilisateurs.prenom AS prenom_membre,
     activite.nom_Activité AS nom_activite,
     reservations.date_reservation,
     reservations.statut
 FROM 
     reservations
 JOIN 
-    membres ON reservations.idmembre = membres.id_Membre
+   Utilisateurs ON reservations.idmembre =Utilisateurs.id_user
 JOIN 
     activite ON reservations.idactivite = activite.id_Activite;
+
+
+
+-- Combien de réservations ont été confirmées dans le système ?
+-- Quelle est la capacité moyenne des activités proposées ?
+-- Combien de membres distincts ont effectué au moins une réservation ?
+-- Quelles sont les trois activités les plus réservées ?
+-- Quel est le pourcentage des réservations annulées par rapport au total des réservations ?
