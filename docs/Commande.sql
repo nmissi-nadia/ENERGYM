@@ -36,14 +36,14 @@ CREATE TABLE reservations (
 
 -- Insertion dans les tables
 -- table membre
-INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
-VALUES ('NMISSI', 'Nadia', 'nmissi@example.com', '0612345678');
-INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
-VALUES ('EL HAMRAOUI', 'Fatima', 'elhamraoui@example.com', '0654321987');
-INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
-VALUES ('OUAHBI', 'Mohamed', 'ouahbi@example.com', '0678451239');
-INSERT INTO Utilisateurs (nom, prenom, mail, telephone) 
-VALUES ('BENHADDOU', 'Salma', 'benhaddou@example.com', '0611223344');
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone,mot_de_passe,rolee) 
+VALUES ('NMISSI', 'Nadia', 'nmissi@example.com', '0612345678',"1234","admin");
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone,,mot_de_passe,rolee) 
+VALUES ('EL HAMRAOUI', 'Fatima', 'elhamraoui@example.com', '0654321987',"1234","admin");
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone,mot_de_passe,rolee) 
+VALUES ('OUAHBI', 'Mohamed', 'ouahbi@example.com', '0678451239',"1234","membre");
+INSERT INTO Utilisateurs (nom, prenom, mail, telephone,mot_de_passe,rolee) 
+VALUES ('BENHADDOU', 'Salma', 'benhaddou@example.com', '0611223344',"1234","membre");
 
 
 -- table activite
