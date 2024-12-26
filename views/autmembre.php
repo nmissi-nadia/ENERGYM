@@ -1,3 +1,52 @@
+<?php
+session_start();
+require_once '../classes/Utilisateur.php';
+require_once '../config/db_connect.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = htmlspecialchars($_POST['email']);
+    $motDePasse = $_POST['password'];
+    $role = $_POST['role'];
+
+    try {
+       
+        $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE mail = :mail AND rolee = :rolee");
+        $stmt->execute(['mail' => $email, 'rolee' => $role]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($motDePasse, $user['mot_de_passe'])) {
+            
+            if ($role === 'membre') {
+                $_SESSION['utilisateur'] = new Membre(
+                    $user['id_user'],
+                    $user['nom'],
+                    $user['prenom'],
+                    $user['mail'],
+                    $user['telephone'],
+                    $user['mot_de_passe']
+                );
+                header("Location: ../pages/dashboard_membre.php");
+            } elseif ($role === 'admin') {
+                $_SESSION['utilisateur'] = new Admin(
+                    $user['id_user'],
+                    $user['nom'],
+                    $user['prenom'],
+                    $user['email'],
+                    $user['telephone'],
+                    $user['motDePasse']
+                );
+                header("Location: ../pages/dashboard_admin.php");
+            }
+            exit;
+        } else {
+            $message = "Identifiants incorrects.";
+        }
+    } catch (PDOException $e) {
+        die("Erreur lors de la connexion : " . $e->getMessage());
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
