@@ -89,7 +89,7 @@
     Accédez à vos informations personnelles, consultez vos réservations et découvrez nos activités exclusives. Ici, vous pouvez suivre votre historique, gérer vos inscriptions et rester informé des nouveautés. Profitez d'une expérience personnalisée et d'un accès simplifié à tous nos services.    </p>
   </div>
   <div class="px-6 pt-4 pb-2">
-  <button onclick="window.location.href='logmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+  <button onclick="window.location.href='autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
   Membre
 </button>
   </div>
@@ -102,7 +102,7 @@
     Gérez efficacement les activités, les réservations et les membres de la plateforme. Cet espace vous permet de superviser, ajouter, modifier ou supprimer les contenus en toute simplicité. Assurez un suivi en temps réel des opérations essentielles et maintenez un contrôle total sur le bon fonctionnement du système.    </p>
   </div>
   <div class="px-6 pt-4 pb-2">
-  <button onclick="window.location.href='login.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+  <button onclick="window.location.href='autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
   Administration
 </button>
   </div>

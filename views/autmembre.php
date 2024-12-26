@@ -25,17 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $user['telephone'],
                     $user['mot_de_passe']
                 );
-                header("Location: ../pages/dashboard_membre.php");
+                header("Location: ./membre/dashboard.php");
             } elseif ($role === 'admin') {
                 $_SESSION['utilisateur'] = new Admin(
                     $user['id_user'],
                     $user['nom'],
                     $user['prenom'],
-                    $user['email'],
+                    $user['mail'],
                     $user['telephone'],
-                    $user['motDePasse']
+                    $user['mot_de_passe']
                 );
-                header("Location: ../pages/dashboard_admin.php");
+                header("Location: ../admin/dashboard.php");
             }
             exit;
         } else {
@@ -75,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="email" name="email" placeholder="Email" id="email-log" required>
                 <input type="password" name="password" placeholder="Mot de passe" id="password-log" required>
                 <select name="role" style="background-color: #ffffff; width: 60px;" id="role">
-                    <option value="user">Client</option>
-                    <option value="avoc">Avocat</option>
+                    <option value="admin">Admin</option>
+                    <option value="membre">Membre</option>
                 </select>
                 <button id="button2">Connecter</button>
             </form>
