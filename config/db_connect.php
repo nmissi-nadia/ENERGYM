@@ -1,7 +1,7 @@
 <?php
 // Paramètres de connexion
 $host = 'localhost';
-$dbname = 'salle_sport';
+$dbname = 'salle_sportv2';
 $username = 'root';
 $password = '';
 
