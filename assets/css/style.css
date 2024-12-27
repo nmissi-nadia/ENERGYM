@@ -3,15 +3,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
-h1, h2, h3 {
-    /* color: #289c39; */
-}
+
 table {
     width: 90%;
     border-collapse: collapse;
     margin: 3rem  3rem;
     
   
+}
+.titre{
+    font-size: 23px;
+    font-weight: bold;
 }
 table th, table td {
     border: 1px solid #ccc;
@@ -51,15 +53,16 @@ button {
     min-height: 100vh;
 }
 
-h2, h3 {
-    color: #cf0aa6;
-    margin-bottom: 20px;
+h1, h2 {
+    color: #5b1b4e;
+  
 }
 .modifier{
-    padding: 6px 2rem;
+    padding: 6px 0;
     background: linear-gradient(#c7b5b5, #7d81a5);
     text-align: center;
-    padding-left: 10px;
+    padding-left: 18px;
+    padding-right: 41px;
 }
 .modifier:hover{
     
@@ -67,7 +70,10 @@ h2, h3 {
     transform: 1s;
 }
 .ajouter{
+
     color: #9198e5;
+    padding: 21px;
+    font-size: 24px;
 }
 .titreAjouter{
   width: 50%;
@@ -76,6 +82,9 @@ h2, h3 {
     width: 30%;
     background-color: #9198e5;
     margin-left: 14rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 10px;
 }
 
 .formOne {
