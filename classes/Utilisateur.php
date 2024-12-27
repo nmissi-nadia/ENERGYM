@@ -138,24 +138,96 @@ class Membre extends Utilisateur {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 }
+
+
+// ============================================================
+
+
 // class Admin hérit d 'utilisateur
 class Admin extends Utilisateur {
     
-    public function confirmerReservation($reservationId) {
-        
-        return "La réservation avec l'ID $reservationId a été confirmée.";
+    // Méthode pour consulter la liste des membres inscrits
+    public static function consulterMembres($pdo) {
+        $stmt = $pdo->query("SELECT * FROM utilisateurs WHERE rolee = 'membre'");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Annuler une réservation
-    public function annulerReservationAdmin($reservationId) {
-        
-        return "La réservation avec l'ID $reservationId a été annulée par l'administrateur.";
+    // Méthode pour consulter les réservations des membres
+    public static function consulterReservations($pdo) {
+        $stmt = $pdo->query("SELECT r.id_reservation, u.nom, u.prenom, a.nom_Activité, r.statut, r.date_reservation 
+                              FROM reservations r
+                              JOIN utilisateurs u ON r.idmembre = u.id_user
+                              JOIN activite a ON r.idactivite = a.id_Activite");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Ajouter une activité
-    public function ajouterActivite($activite) {
-        
-        return "Activité '$activite' ajoutée avec succès.";
+    // Méthode pour confirmer ou annuler une réservation
+    public function modifierReservation($idReservation, $statut, $pdo) {
+        try {
+            $stmt = $pdo->prepare("UPDATE reservations SET statut = :statut WHERE id_reservation = :idReservation");
+            $stmt->execute([
+                'idReservation' => $idReservation,
+                'statut' => $statut,
+            ]);
+            return "Réservation modifiée avec succès.";
+        } catch (PDOException $e) {
+            return "Erreur lors de la modification de la réservation : " . $e->getMessage();
+        }
+    }
+
+    // Méthode pour ajouter une nouvelle activité
+    public function ajouterActivite($nomActivite, $description, $capacite, $dateDebut, $dateFin, $pdo) {
+        try {
+            $stmt = $pdo->prepare("INSERT INTO activite (nom_Activité, description, capacite, date_debut, date_fin) 
+                                   VALUES (:nomActivite, :description, :capacite, :dateDebut, :dateFin)");
+            $stmt->execute([
+                'nomActivite' => $nomActivite,
+                'description' => $description,
+                'capacite' => $capacite,
+                'dateDebut' => $dateDebut,
+                'dateFin' => $dateFin,
+            ]);
+            return "Activité ajoutée avec succès.";
+        } catch (PDOException $e) {
+            return "Erreur lors de l'ajout de l'activité : " . $e->getMessage();
+        }
+    }
+
+    // Méthode pour modifier une activité
+    public function modifierActivite($idActivite, $nomActivite, $description, $capacite, $dateDebut, $dateFin, $pdo) {
+        try {
+            $stmt = $pdo->prepare("UPDATE activite SET nom_Activité = :nomActivite, description = :description, capacite = :capacite, 
+                                   date_debut = :dateDebut, date_fin = :dateFin WHERE id_Activite = :idActivite");
+            $stmt->execute([
+                'idActivite' => $idActivite,
+                'nomActivite' => $nomActivite,
+                'description' => $description,
+                'capacite' => $capacite,
+                'dateDebut' => $dateDebut,
+                'dateFin' => $dateFin,
+            ]);
+            return "Activité modifiée avec succès.";
+        } catch (PDOException $e) {
+            return "Erreur lors de la modification de l'activité : " . $e->getMessage();
+        }
+    }
+
+    // Méthode pour supprimer une activité
+    public function supprimerActivite($idActivite, $pdo) {
+        try {
+            $stmt = $pdo->prepare("DELETE FROM activite WHERE id_Activite = :idActivite");
+            $stmt->execute(['idActivite' => $idActivite]);
+            return "Activité supprimée avec succès.";
+        } catch (PDOException $e) {
+            return "Erreur lors de la suppression de l'activité : " . $e->getMessage();
+        }
+    }
+
+    //Afficher la liste des activité 
+    public function AfficherListActivite($pdo){
+          $stmt = $pdo->query("SELECT * FROM activite");
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+          
     }
 }
 ?>
