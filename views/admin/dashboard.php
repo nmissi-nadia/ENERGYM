@@ -35,45 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord - Administrateur</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-        table th {
-            background-color: #f4f4f4;
-        }
-        form {
-            display: inline;
-        }
-        select, input[type="text"], input[type="number"], input[type="date"], textarea, button {
-            margin: 5px 0;
-            padding: 8px;
-            font-size: 14px;
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/style.css">
+   
 </head>
 <body>
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nom']); ?></h1>
