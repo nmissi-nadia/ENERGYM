@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'telephone' => $telephone
         ]);
 
-        header("Location: ./membre/dashboard.php?message=Inscription réussie!");
+        header("Location: ./autmembre.php");
     } catch (PDOException $e) {
         die("Erreur lors de l'inscription : " . $e->getMessage());
     }

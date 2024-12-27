@@ -1,5 +1,5 @@
 <?php
-require "../config/db_connect.php";
+require "../../config/db_connect.php";
 class Utilisateur {
     protected $id_user;
     protected $nom;
@@ -9,7 +9,7 @@ class Utilisateur {
     protected $motDePasse;
 
     // Constructeur
-    public function __construct($id, $nom,$prenom, $email,$telephpne, $motDePasse) {
+    public function __construct($id, $nom,$prenom, $email,$telephone, $motDePasse) {
         $this->id_user = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -56,12 +56,12 @@ class Utilisateur {
     // Méthode d'authentification
     public static function authentifier($email, $motDePasse, $pdo) {
         try {
-            $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+            $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE mail = :email");
             $stmt->execute(['email' => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($user && password_verify($motDePasse, $user['motDePasse'])) {
-                if ($user['role'] === 'membre') {
+            if ($user && password_verify($motDePasse, $user['mot_de_passe'])) {
+                if ($user['rolee'] === 'membre') {
                     return new Membre(
                         $user['id_user'],
                         $user['nom'],
@@ -70,7 +70,7 @@ class Utilisateur {
                         $user['telephone'],
                         $user['motDePasse']
                     );
-                } elseif ($user['role'] === 'admin') {
+                } elseif ($user['rolee'] === 'admin') {
                     return new Admin(
                         $user['id_user'],
                         $user['nom'],
@@ -92,33 +92,51 @@ class Utilisateur {
 class Membre extends Utilisateur {
     private $reservations = [];
 
-    // Ajout d une réservation
-    public function ajouterReservation($reservation) {
-        $this->reservations[] = $reservation;
-    }
-    // Annuler une réservation
-    public function annulerReservation($reservationId) {
-        foreach ($this->reservations as $index => $reservation) {
-            if ($reservation['id'] === $reservationId) {
-                unset($this->reservations[$index]);
-                return true;
+
+
+        // Méthode pour consulter les activités disponibles
+        public static function consulterActivites($pdo) {
+            $stmt = $pdo->query("SELECT * FROM activite WHERE disponibilite = 1");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        // Méthode pour réserver une activité
+        public function reserverActivite($idActivite, $pdo) {
+            try {
+                $stmt = $pdo->prepare("INSERT INTO reservations (idmembre, idactivite) VALUES (:idmembre, :idactivite)");
+                $stmt->execute([
+                    'idmembre' => $this->id_user,
+                    'idactivite' => $idActivite,
+                ]);
+                return "Réservation effectuée avec succès.";
+            } catch (PDOException $e) {
+                return "Erreur lors de la réservation : " . $e->getMessage();
             }
         }
-        return false;
-    }
 
-    // Afficher les réservations
-    public function afficherReservations() {
-        if (empty($this->reservations)) {
-            return "Aucune réservation.";
+        // Méthode pour annuler une réservation
+        public function annulerReservation($idReservation, $pdo) {
+            try {
+                $stmt = $pdo->prepare("UPDATE reservations SET statut = 'Annulée' WHERE id_reservation = :idReservation AND idmembre = :idmembre");
+                $stmt->execute([
+                    'idReservation' => $idReservation,
+                    'idmembre' => $this->id_user,
+                ]);
+                return "Réservation annulée avec succès.";
+            } catch (PDOException $e) {
+                return "Erreur lors de l'annulation : " . $e->getMessage();
+            }
         }
 
-        $result = "Réservations:\n";
-        foreach ($this->reservations as $reservation) {
-            $result .= "- " . $reservation['details'] . "\n";
+        // Méthode pour afficher le récapitulatif des réservations
+        public function afficherReservations($pdo) {
+            $stmt = $pdo->prepare("SELECT r.id_reservation, a.nom_Activité, r.statut, r.date_reservation 
+                                FROM reservations r 
+                                JOIN activite a ON r.idactivite = a.id_Activite 
+                                WHERE r.idmembre = :idmembre");
+            $stmt->execute(['idmembre' => $this->id_user]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        return $result;
-    }
 }
 
 
