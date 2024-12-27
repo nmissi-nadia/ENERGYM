@@ -1,4 +1,4 @@
--- Creation d'une base de donnee
+-- Creation d'une base de donnee           
 create database salle_sportv2;
 -- utilisation de base se donnes
 use salle_sportv2 ;
@@ -37,7 +37,7 @@ CREATE TABLE reservations (
 -- Insertion dans les tables
 -- table membre
 INSERT INTO Utilisateurs (nom, prenom, mail, telephone,mot_de_passe,rolee) 
-VALUES ('NMISSI', 'Nadia', 'nmissi@example.com', '0612345678',"1234","admin");
+VALUES ('NMISSI', 'Nadia', 'nmiss@example.com', '0612345678',"1234","admin");
 INSERT INTO Utilisateurs (nom, prenom, mail, telephone,,mot_de_passe,rolee) 
 VALUES ('EL HAMRAOUI', 'Fatima', 'elhamraoui@example.com', '0654321987',"1234","admin");
 INSERT INTO Utilisateurs (nom, prenom, mail, telephone,mot_de_passe,rolee) 
@@ -58,13 +58,13 @@ VALUES ('Natation', 'Cours de natation pour débutants', 10, '2024-12-10', '2024
 
 -- table reservation 
 INSERT INTO reservations (idmembre, idactivite, date_reservation, statut) 
-VALUES (2, 3, '2024-12-10 15:30:00', 'Confirmée');
+VALUES (12, 3, '2024-12-10 15:30:00', 'Confirmée');
 INSERT INTO reservations (idmembre, idactivite, date_reservation, statut) 
-VALUES (3, 1, '2024-12-12 14:00:00', 'Annulée');
+VALUES (11, 1, '2024-12-12 14:00:00', 'Annulée');
 INSERT INTO reservations (idmembre, idactivite, date_reservation, statut) 
-VALUES (2, 2, '2024-12-18 16:30:00', 'Confirmée');
+VALUES (12, 2, '2024-12-18 16:30:00', 'Confirmée');
 INSERT INTO reservations (idmembre, idactivite, date_reservation, statut) 
-VALUES (1, 3, '2024-12-22 09:00:00', 'Confirmée');
+VALUES (11, 3, '2024-12-22 09:00:00', 'Confirmée');
 
 
 -- Afichage dans les tables
@@ -80,7 +80,7 @@ SELECT * FROM reservations;
 
 -- update dans les tables
 -- table membre
-UPDATEUtilisateurs 
+UPDATE Utilisateurs 
 SET telephone = '0698765432' 
 WHERE id_user = 1;
 UPDATE Utilisateurs 
@@ -112,24 +112,20 @@ WHERE id_Activite = 3;
 -- table reservation
 UPDATE reservations 
 SET statut = 'Annulée' 
-WHERE id_reservation = 1;
+WHERE id_reservation = 41;
+
 UPDATE reservations 
 SET statut = 'Confirmée' 
-WHERE id_reservation = 2;
+WHERE id_reservation = 42;
 
 UPDATE reservations 
 SET date_reservation = '2024-12-24 11:00:00' 
-WHERE id_reservation = 3;
-
-UPDATE reservations 
-SET idmembre = 4 
-WHERE id_reservation = 1;
-
+WHERE id_reservation = 43;
 
 -- suppression dans les tables
 -- table membre
 DELETE FROM Utilisateurs 
-WHERE id_user = 1;
+WHERE id_user = 9;
 
 -- table activite
 DELETE FROM activite 
@@ -137,7 +133,7 @@ WHERE id_Activite = 1;
 
 -- table reservation 
 DELETE FROM reservations 
-WHERE id_reservation = 1;
+WHERE id_reservation = 42;
 
 
 -- Requtes avec jointures 
@@ -155,7 +151,7 @@ SELECT
     activite.nom_Activité AS nom_activite,
     reservations.date_reservation,
     reservations.statut
-FROM 
+FROM    
     reservations
 JOIN 
    Utilisateurs ON reservations.idmembre =Utilisateurs.id_user
@@ -165,7 +161,31 @@ JOIN
 
 
 -- Combien de réservations ont été confirmées dans le système ?
+  select count(*) from réservation
+  where statut = "confirmée";
+
+
+
 -- Quelle est la capacité moyenne des activités proposées ?
+select avg(capacité) 
+from activités
+
 -- Combien de membres distincts ont effectué au moins une réservation ?
+
+ SELECT COUNT(DISTINCT Utilisateurs.id_user) AS nombre_membres_distincts
+FROM Utilisateurs
+JOIN Reservation
+ON Reservation.idMembre = Utilisateurs.id_user;
+
+
 -- Quelles sont les trois activités les plus réservées ?
--- Quel est le pourcentage des réservations annulées par rapport au total des réservations ?
+ select activite.id_Activite , activite.nom_activite , count(reservation.id_reservation)
+ from activite
+ JOIN reservation
+ ON activite.id_Activite = reservation.idactivite
+ GROUP BY activite.id_Activite , activite.nom_activite
+ order BY COUNT(reservations.id_reservation) desc 
+ limit 3;
+
+
+-- Quel est le pourcentage des réservations annulées par rapport au total  des réservations ?
