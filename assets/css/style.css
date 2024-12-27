@@ -36,9 +36,7 @@ button {
     border: none;
     cursor: pointer;
 }
-button:hover {
-    background-color: #0056b3;
-}
+
 
 /* ====== */
  body {
@@ -60,6 +58,13 @@ h2, h3 {
 .modifier{
     padding: 6px 2rem;
     background: linear-gradient(#c7b5b5, #7d81a5);
+    text-align: center;
+    padding-left: 10px;
+}
+.modifier:hover{
+    
+    background: linear-gradient( #7d81a5 , #c7b5b5);
+    transform: 1s;
 }
 .ajouter{
     color: #9198e5;
@@ -106,7 +111,7 @@ button {
 }
 
 button:hover {
-    background-color: #a06645;
+    background-color: #3b39a5;
 }
 
 textarea {
@@ -123,7 +128,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .container {
