@@ -228,10 +228,13 @@ class Admin extends Utilisateur {
     }
 
     //Afficher la liste des activité 
-    public function AfficherListActivite($pdo){
-          $stmt = $pdo->query("SELECT * FROM activite");
-          return $stmt->fetchAll(PDO::FETCH_ASSOC);
-          
+    public static function AfficherListActivite($pdo) {
+        try {
+            $stmt = $pdo->query("SELECT * FROM activite");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erreur lors de la récupération des activités : " . $e->getMessage());
+        }
     }
 }
 ?>
