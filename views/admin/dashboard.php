@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord - Administrateur</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
    
 </head>
 <body>
@@ -100,32 +100,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </tbody>
     </table>
 
-    <h2>Gestion des Activités</h2>
-    <h3>Ajouter une activité</h3>
-    <form method="POST">
-        <input type="text" name="nom_activite" placeholder="Nom de l'activité" required>
-        <textarea name="description" placeholder="Description" required></textarea>
-        <input type="number" name="capacite" placeholder="Capacité" required>
-        <input type="date" name="date_debut" required>
-        <input type="date" name="date_fin" required>
-        <button type="submit" name="ajouterActivite">Ajouter</button>
-    </form>
+    <div class="container">
+        <h2>Gestion des Activités</h2>
 
-    <h3>Modifier/Supprimer une activité</h3>
-    <form method="POST">
-        <input type="number" name="id_activite" placeholder="ID de l'activité" required>
-        <input type="text" name="nom_activite" placeholder="Nom de l'activité">
-        <textarea name="description" placeholder="Description"></textarea>
-        <input type="number" name="capacite" placeholder="Capacité">
-        <input type="date" name="date_debut">
-        <input type="date" name="date_fin">
-        <button type="submit" name="modifierActivite">Modifier</button>
-    </form>
-    <form method="POST">
-        <input type="number" name="id_activite" placeholder="ID de l'activité" required>
-        <button type="submit" name="supprimerActivite">Supprimer</button>
-    </form>
+        <h3>Ajouter une activité</h3>
+        <form method="POST">
+            <input type="text" name="nom_activite" placeholder="Nom de l'activité" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="number" name="capacite" placeholder="Capacité" required>
+            <input type="date" name="date_debut" required>
+            <input type="date" name="date_fin" required>
+            <button type="submit" name="ajouterActivite">Ajouter</button>
+        </form>
 
-    <a href="logout.php">Se déconnecter</a>
+        <h3>Modifier/Supprimer une activité</h3>
+        <form method="POST">
+            <input type="number" name="id_activite" placeholder="ID de l'activité" required>
+            <input type="text" name="nom_activite" placeholder="Nom de l'activité">
+            <textarea name="description" placeholder="Description"></textarea>
+            <input type="number" name="capacite" placeholder="Capacité">
+            <input type="date" name="date_debut">
+            <input type="date" name="date_fin">
+            <button type="submit" name="modifierActivite">Modifier</button>
+        </form>
+        <form method="POST">
+            <input type="number" name="id_activite" placeholder="ID de l'activité" required>
+            <button type="submit" name="supprimerActivite" style="background-color: #e74c3c;">Supprimer</button>
+        </form>
+
+        <a href="logout.php">Se déconnecter</a>
+    </div>
 </body>
 </html>
