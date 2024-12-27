@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez une solution de paiement puissante pour les entreprises de logiciels. Simplifiez vos processus, de la caisse au respect des taxes mondiales, avec notre outil innovant et fiable.">
-    <meta name="keywords" content="paiement en ligne, solution de paiement, logiciel de paiement, compliance fiscale, taxes mondiales, outil de paiement, entreprises de logiciels, checkout, simplification des paiements">
+    <meta name="description" content="Rejoignez notre salle de sport et atteignez vos objectifs de fitness. Profitez d'équipements modernes, de cours variés et d'un accompagnement personnalisé pour une expérience sportive unique.">
+<meta name="keywords" content="salle de sport, fitness, musculation, cours collectifs, entraînement personnalisé, équipement sportif, remise en forme, bien-être, coaching sportif, objectifs de fitness">
 
     <title>ENERGYM</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +16,7 @@
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <img src="../assets/images/energym.png" class="h-8 me-3 scale-[2.5]" alt="energym Logo" />
                 <div class="flex items-center lg:order-2">
-                    <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
+                    <a href="./autmembre.php" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
                     <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get started</a>
                     <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
@@ -89,7 +89,7 @@
     Accédez à vos informations personnelles, consultez vos réservations et découvrez nos activités exclusives. Ici, vous pouvez suivre votre historique, gérer vos inscriptions et rester informé des nouveautés. Profitez d'une expérience personnalisée et d'un accès simplifié à tous nos services.    </p>
   </div>
   <div class="px-6 pt-4 pb-2">
-  <button onclick="window.location.href='autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+  <button onclick="window.location.href='./autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
   Membre
 </button>
   </div>
@@ -102,7 +102,7 @@
     Gérez efficacement les activités, les réservations et les membres de la plateforme. Cet espace vous permet de superviser, ajouter, modifier ou supprimer les contenus en toute simplicité. Assurez un suivi en temps réel des opérations essentielles et maintenez un contrôle total sur le bon fonctionnement du système.    </p>
   </div>
   <div class="px-6 pt-4 pb-2">
-  <button onclick="window.location.href='autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+  <button onclick="window.location.href='./autmembre.php'" class="bg-violet-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
   Administration
 </button>
   </div>

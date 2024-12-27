@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once '../classes/Utilisateur.php';
 require_once '../config/db_connect.php';
+require_once '../classes/Utilisateur.php';
+
 // Méthode 1
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $email = htmlspecialchars($_POST['email']);
@@ -87,6 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rejoignez notre salle de sport et atteignez vos objectifs de fitness. Profitez d'équipements modernes, de cours variés et d'un accompagnement personnalisé pour une expérience sportive unique.">
+<meta name="keywords" content="salle de sport, fitness, musculation, cours collectifs, entraînement personnalisé, équipement sportif, remise en forme, bien-être, coaching sportif, objectifs de fitness">
+
     <title>AUthentification ENERGYM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/userlogin.css">

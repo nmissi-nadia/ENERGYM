@@ -1,5 +1,5 @@
 <?php
-require "../../config/db_connect.php";
+//require_once "../../config/db_connect.php";
 class Utilisateur {
     protected $id_user;
     protected $nom;
