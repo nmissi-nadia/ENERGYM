@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $utilisateur = Utilisateur::authentifier($email, $password, $pdo);
       if ($utilisateur) {
           if ($utilisateur instanceof Membre) {
-            //   session_start();
+            //    session_start();
               $_SESSION['id_user'] = $utilisateur->getId();
               $_SESSION['nom'] = $utilisateur->getNom();
               $_SESSION['role'] = 'membre';
