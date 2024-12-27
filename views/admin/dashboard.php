@@ -47,23 +47,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2>Membres Inscrits</h2>
     <table>
-        <thead>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($membres as $membre): ?>
             <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Email</th>
+                <td><?php echo htmlspecialchars($membre['nom']); ?></td>
+                <td><?php echo htmlspecialchars($membre['prenom']); ?></td>
+                <td><?php echo htmlspecialchars($membre['mail']); ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="id_membre" value="<?php echo $membre['id_membre']; ?>">
+                        <button type="submit" name="supprimer" style="background-color: red; color: white;">Supprimer</button>
+                    </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($membres as $membre): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($membre['nom']); ?></td>
-                    <td><?php echo htmlspecialchars($membre['prenom']); ?></td>
-                    <td><?php echo htmlspecialchars($membre['mail']); ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
 
     <h2>Réservations des Membres</h2>
     <table>
