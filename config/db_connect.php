@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'salle_sportv2';
 $username = 'root';
-$password = '12345';
+$password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);

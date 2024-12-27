@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once '../classes/Utilisateur.php';
 require_once '../config/db_connect.php';
+require_once '../classes/Utilisateur.php';
+
 // Méthode 1
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $email = htmlspecialchars($_POST['email']);
