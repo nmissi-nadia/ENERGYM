@@ -233,7 +233,7 @@ class Admin extends Utilisateur {
     //       return $stmt->fetchAll(PDO::FETCH_ASSOC);
           
     // }
-    public static function AfficherListActivite($pdo) {
+    public static function consulterActivites($pdo) {
         try {
             $stmt = $pdo->query("SELECT * FROM activite");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
