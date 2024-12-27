@@ -189,3 +189,7 @@ ON Reservation.idMembre = Utilisateurs.id_user;
 
 
 -- Quel est le pourcentage des réservations annulées par rapport au total  des réservations ?
+SELECT 
+    (COUNT(CASE WHEN statut = 'Annulée' THEN 1 END) * 100.0 / COUNT(*))
+FROM 
+    reservations;
