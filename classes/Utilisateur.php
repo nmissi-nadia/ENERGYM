@@ -60,28 +60,32 @@ class Utilisateur {
             $stmt->execute(['email' => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+           
+
             if ($user && password_verify($motDePasse, $user['mot_de_passe'])) {
+                
                 if ($user['rolee'] === 'membre') {
                     return new Membre(
                         $user['id_user'],
                         $user['nom'],
                         $user['prenom'],
-                        $user['email'],
+                        $user['mail'],
                         $user['telephone'],
-                        $user['motDePasse']
+                        $user['mot_de_passe']
                     );
-                } elseif ($user['rolee'] === 'admin') {
+                } else if ($user['rolee'] === 'admin') {
                     return new Admin(
                         $user['id_user'],
                         $user['nom'],
                         $user['prenom'],
-                        $user['email'],
+                        $user['mail'],
                         $user['telephone'],
-                        $user['motDePasse']
+                        $user['mot_de_passe']
                     );
+                }else{
+                    return null;
                 }
-            }
-            return null; // Authentification échouée
+            } // Authentification échouée
         } catch (PDOException $e) {
             die("Erreur lors de l'authentification : " . $e->getMessage());
         }
@@ -90,7 +94,7 @@ class Utilisateur {
 
 // cllass membre hérite d'utilisateur 
 class Membre extends Utilisateur {
-    private $reservations = [];
+    // private $reservations = [];
 
 
 
