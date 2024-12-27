@@ -96,16 +96,14 @@ class Utilisateur {
 class Membre extends Utilisateur {
     // private $reservations = [];
 
-
-
         // Méthode pour consulter les activités disponibles
-        public static function consulterActivites($pdo) {
+        public static function consulter_Activites($pdo) {
             $stmt = $pdo->query("SELECT * FROM activite WHERE disponibilite = 1");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         // Méthode pour réserver une activité
-        public function reserverActivite($idActivite, $pdo) {
+        public function reserver_Activite($idActivite, $pdo) {
             try {
                 $stmt = $pdo->prepare("INSERT INTO reservations (idmembre, idactivite) VALUES (:idmembre, :idactivite)");
                 $stmt->execute([
@@ -233,7 +231,7 @@ class Admin extends Utilisateur {
     //       return $stmt->fetchAll(PDO::FETCH_ASSOC);
           
     // }
-    public static function consulterActivites($pdo) {
+    public static function AfficherListActivite($pdo) {
         try {
             $stmt = $pdo->query("SELECT * FROM activite");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

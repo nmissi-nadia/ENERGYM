@@ -12,14 +12,14 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'membre') {
 
 $membre = new Membre($_SESSION['id_user'], $_SESSION['nom'], '', '', '', '');
 
-$activites = Membre::consulterActivites($pdo);
+$activites = Membre::consulter_Activites($pdo);
 
 $reservations = $membre->afficherReservations($pdo);
 
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['reserver']) || isset($_POST['annuler']))) {
     if (isset($_POST['reserver'])) {
-        $message = $membre->reserverActivite($_POST['id_activite'], $pdo);
+        $message = $membre->reserver_Activite($_POST['id_activite'], $pdo);
     } elseif (isset($_POST['annuler'])) {
         $message = $membre->annulerReservation($_POST['id_reservation'], $pdo);
     }
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['reserver']) || isset
                     </ul>
                 </div>
             </div>
-        </nav>
+    </nav>
     <h1 class="justify-self-center text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-indigo-500 via-purple-500 to-pink-500 mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">Bienvenue, <?php echo htmlspecialchars($_SESSION['nom']); ?></h1>
     </header>
     
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['reserver']) || isset
         <h2 class="ml-20 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Activités disponibles</h2>
         <table class="w-[90vw] bg-white  justify-self-center my-10">
             <thead class="bg-gradient-to-r to-emerald-600 from-indigo-500 via-purple-500 to-pink-500">
-            <tr class="bg-gray-200 text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+            <tr class="bg-purple-200 text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                     <th class="py-2">ID d'Activité</th>
                     <th>Nom de l'Activité</th>
                     <th>Description</th>

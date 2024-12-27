@@ -1,19 +1,25 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
-h1, h2, h3 {
-    color: #333;
-}
+
 table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 3rem  3rem;
+    
+  
+}
+.titre{
+    font-size: 23px;
+    font-weight: bold;
 }
 table th, table td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
+   
 }
 table th {
     background-color: #f4f4f4;
@@ -27,14 +33,12 @@ select, input[type="text"], input[type="number"], input[type="date"], textarea, 
     font-size: 14px;
 }
 button {
-    background-color: #007BFF;
+    background-color: #ff00b7;
     color: white;
     border: none;
     cursor: pointer;
 }
-button:hover {
-    background-color: #0056b3;
-}
+
 
 /* ====== */
  body {
@@ -49,19 +53,50 @@ button:hover {
     min-height: 100vh;
 }
 
-h2, h3 {
-    color: #333;
-    margin-bottom: 20px;
+h1, h2 {
+    color: #5b1b4e;
+  
+}
+.modifier{
+    padding: 6px 0;
+    background: linear-gradient(#c7b5b5, #7d81a5);
+    text-align: center;
+    padding-left: 18px;
+    padding-right: 41px;
+}
+.modifier:hover{
+    
+    background: linear-gradient( #7d81a5 , #c7b5b5);
+    transform: 1s;
+}
+.ajouter{
+
+    color: #9198e5;
+    padding: 21px;
+    font-size: 24px;
+}
+.titreAjouter{
+  width: 50%;
+}
+.bouttonAjouter{
+    width: 30%;
+    background-color: #9198e5;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 10px;
 }
 
-form {
-    background: #fff;
+.formOne {
+    /* background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
     padding: 20px;
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; */
+    display: flex;
+    justify-content: space-around;
 }
 
 input, textarea, button {
@@ -73,8 +108,11 @@ input, textarea, button {
     font-size: 16px;
 }
 
+thead tr th{
+    background: linear-gradient(#e66465, #9198e5);
+}
 button {
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
     color: white;
     border: none;
     cursor: pointer;
@@ -82,7 +120,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #3b39a5;
 }
 
 textarea {
@@ -99,7 +137,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .container {
