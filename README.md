@@ -99,9 +99,13 @@ Ce projet a été conçu pour améliorer l'organisation et l'interaction entre l
 
 ## Auteur
 **NMISSI NADIA**
+
 - Contact : nmissinadia@gmail.com
+
 **ELOUAH FADWA**
-- Contact : nmissinadia@gmail.com
+
+- Contact : elouahfadwa@gmail.com
+
 - Étudiantes en développement web à YouCode.
 
 
