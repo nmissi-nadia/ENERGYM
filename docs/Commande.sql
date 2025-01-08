@@ -163,9 +163,29 @@ JOIN
     activite ON reservations.idactivite = activite.id_Activite;
 
 
-
 -- Combien de réservations ont été confirmées dans le système ?
+SELECT COUNT() 
+FROM reservations 
+WHERE statut = 'Confirmée';
+
 -- Quelle est la capacité moyenne des activités proposées ?
+
+SELECT AVG(capacite) 
+FROM activite;
+
 -- Combien de membres distincts ont effectué au moins une réservation ?
+SELECT COUNT(DISTINCT idmembre) 
+FROM reservations;
+
 -- Quelles sont les trois activités les plus réservées ?
+
+SELECT activite.nom_Activité, COUNT(reservations.idactivite) AS nb_reservations
+FROM reservations
+JOIN activite ON reservations.idactivite = activite.id_Activ
+
 -- Quel est le pourcentage des réservations annulées par rapport au total des réservations ?
+
+SELECT 
+    (COUNT() FILTER (WHERE statut = 'Annulée') * 100.0 / COUNT(*)) AS pourcentage_annule
+FROM 
+    reservations;

@@ -198,6 +198,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="number" name="id_activite" placeholder="ID de l'activité" required>
         <button type="submit" name="supprimerActivite" class="bouttonAjouter">Supprimer</button>
     </form>
+
+    
     <footer class="bg-purple-100 w-full dark:bg-gray-900 bottom-0">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">

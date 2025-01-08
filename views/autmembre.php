@@ -29,10 +29,7 @@
                 <span>Utilisez votre compte</span>
                 <input type="email" name="email" placeholder="Email" id="email-log" required>
                 <input type="password" name="password" placeholder="Mot de passe" id="password-log" required>
-                <select name="role" style="background-color: #ffffff; width: 60px;" id="role">
-                    <option value="admin">Admin</option>
-                    <option value="membre">Membre</option>
-                </select>
+                
                 <button id="button2">Connecter</button>
             </form>
         </div>
@@ -47,9 +44,7 @@
                     <h1>Bonjour !</h1>
                     <p>Entrez vos coordonnées et commencez à réserver avec nous</p>
                     <button class="ghost" id="signUp">Inscrire</button>
-                    <a href="avocat/avocatreg.php">
-                        <h3 class="rounded-[20px] border-[1px] border-[solid] border-[#20a87e] bg-[#20a87e] text-[#FFFFFF] text-[12px] font-bold px-[45px] py-[12px] tracking-[1px] uppercase [transition:transform_80ms_ease-in]">Inscription d'un avocat</h3>
-                    </a>
+                    
                 </div>
             </div>
         </div>
